@@ -178,6 +178,15 @@ function loadWidget(config) {
 						return;
 					}
 				});
+				window.addEventListener("mouseout", event => {
+					console.log(event)
+					for (let tips of result.mouseout) {
+						if (!event.target.matches(tips.selector)) continue;
+						let text = randomSelection(tips.text);
+						showMessage(text, 4000, 8);
+						return;
+					}
+				})
 				window.addEventListener("click", event => {
 					for (let tips of result.click) {
 						if (!event.target.matches(tips.selector)) continue;
